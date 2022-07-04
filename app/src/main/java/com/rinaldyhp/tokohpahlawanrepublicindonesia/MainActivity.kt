@@ -1,7 +1,12 @@
 package com.rinaldyhp.tokohpahlawanrepublicindonesia
 
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import com.rinaldyhp.tokohpahlawanrepublicindonesia.adapter.AdapterTokohPahlawan
 import com.rinaldyhp.tokohpahlawanrepublicindonesia.databinding.ActivityMainBinding
 import com.rinaldyhp.tokohpahlawanrepublicindonesia.model.Pahlawan
@@ -104,7 +109,29 @@ class MainActivity : AppCompatActivity() {
 
         binding.list.adapter = AdapterTokohPahlawan(this,listPahlawan, object : AdapterTokohPahlawan.OnClickListener {
             override fun detailData(item: Pahlawan?) {
-                TODO("Not yet implemented")
+                Dialog(this@MainActivity).apply {
+                    requestWindowFeature(Window.FEATURE_NO_TITLE)
+                    setCancelable(true)
+                    setContentView(R.layout.detail_data_pahlawan)
+
+                    val image = this.findViewById<ImageView>(R.id.image_pahlawan)
+                    val nama = this.findViewById<TextView>(R.id.txtNamaPahlawan)
+                    val tempatlahir = this.findViewById<TextView>(R.id.txtTempatLahir)
+                    val tanggallahir = this.findViewById<TextView>(R.id.txtTanggalLahir)
+                    val pendidikan = this.findViewById<TextView>(R.id.txtPendidikan)
+                    val btn = this.findViewById<Button>(R.id.btnClose)
+
+                    image.setImageResource(item?.foto ?:0)
+                    nama.text = "${item?.nama}"
+                    tempatlahir.text = "${item?.tempatlahir}"
+                    tanggallahir.text = "${item?.tgllahir}"
+                    pendidikan.text = "${item?.pendidikan}"
+
+                    btn.setOnClickListener {
+                        this.dismiss()
+                    }
+
+                }.show()
             }
 
         })
