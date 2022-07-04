@@ -11,8 +11,8 @@
         android:id="@+id/logosplash"
         android:layout_width="500dp"
         android:layout_height="500dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo"
+        android:layout_centerInParent="true"/>
 
     <TextView
         android:id="@+id/txtaplicationname"
@@ -21,7 +21,7 @@
         android:text="Tokoh Pahlawan Republic Indonesia V.0.1"
         android:layout_below="@id/logosplash"
         android:layout_centerInParent="true"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <ProgressBar
         android:id="@+id/progeessBar"
